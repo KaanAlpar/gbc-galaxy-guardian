@@ -2,6 +2,18 @@ extends CharacterBody2D
 
 var speed := 120
 
+func _ready() -> void:
+	var my_number = 12
+	
+	if my_number == 10:
+		print("IF")
+	elif my_number == 11:
+		print("ELIF")
+	elif my_number == 12:
+		print("ELIF2")
+	else:
+		print("ELSE")
+
 func _physics_process(_delta: float) -> void:
 	var horizontal_dir := Input.get_axis("move_left", "move_right")
 	var vertical_dir := Input.get_axis("move_up", "move_down")
@@ -14,10 +26,10 @@ func _physics_process(_delta: float) -> void:
 	var viewport_size = get_viewport_rect().size
 	if global_position.x < 0.0:
 		global_position.x = 0.0
-	if global_position.x > viewport_size.x:
+	elif global_position.x > viewport_size.x:
 		global_position.x = viewport_size.x
 		
 	if global_position.y < 0.0:
 		global_position.y = 0.0
-	if global_position.y > viewport_size.y:
+	elif global_position.y > viewport_size.y:
 		global_position.y = viewport_size.y
