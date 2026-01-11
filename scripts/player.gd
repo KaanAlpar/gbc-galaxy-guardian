@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 var speed := 120
 
 func _ready() -> void:
@@ -15,17 +17,11 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	var viewport_size = get_viewport_rect().size
-	#if global_position.x < 0.0:
-		#global_position.x = 0.0
-	#elif global_position.x > viewport_size.x:
-		#global_position.x = viewport_size.x
-		
-	#if global_position.y < 0.0:
-		#global_position.y = 0.0
-	#elif global_position.y > viewport_size.y:
-		#global_position.y = viewport_size.y
-	
-	#global_position.x = clampf(global_position.x, 0.0, viewport_size.x)
-	#global_position.y = clampf(global_position.y, 0.0, viewport_size.y)
-	
 	global_position = global_position.clamp(Vector2(0.0, 0.0), viewport_size)
+	
+	if vertical_dir < 0.0:
+		animation_player.play("up")
+	elif vertical_dir > 0.0:
+		animation_player.play("down")
+	else:
+		animation_player.play("default")
