@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var speed := 120
+var speed := 120.0
 
 func _ready() -> void:
-	pass
+	print(speed)
 
 func _physics_process(_delta: float) -> void:
 	var horizontal_dir := Input.get_axis("move_left", "move_right")
