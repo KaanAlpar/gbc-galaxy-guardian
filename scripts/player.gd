@@ -17,7 +17,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	var viewport_size = get_viewport_rect().size
-	global_position = global_position.clamp(Vector2(0.0, 0.0), viewport_size)
+	global_position = global_position.clamp(Vector2.ZERO, viewport_size)
 	
 	if vertical_dir < 0.0:
 		animation_player.play("up")
