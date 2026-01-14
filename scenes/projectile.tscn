@@ -2,6 +2,42 @@
 
 [ext_resource type="Texture2D" uid="uid://b6qjd4jnum1c4" path="res://assets/textures/projectile/laser1.png" id="1_c8fcr"]
 [ext_resource type="Script" uid="uid://cl50cnl0hnb71" path="res://scripts/projectile.gd" id="1_q3m7n"]
+[ext_resource type="Texture2D" uid="uid://cp7xiqfiergpq" path="res://assets/textures/projectile/laser2.png" id="3_softn"]
+[ext_resource type="Texture2D" uid="uid://o5cf4iskgi8r" path="res://assets/textures/projectile/hit1.png" id="4_w7nm8"]
+[ext_resource type="Texture2D" uid="uid://byqnu2kwyvryd" path="res://assets/textures/projectile/hit2.png" id="5_6c2e5"]
+[ext_resource type="Texture2D" uid="uid://c4tchjgbmptxc" path="res://assets/textures/projectile/hit3.png" id="6_pl1gp"]
+[ext_resource type="Texture2D" uid="uid://bpdrxjs26j1m2" path="res://assets/textures/projectile/hit4.png" id="7_ejmht"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6q2a6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c8fcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_softn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_w7nm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6c2e5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pl1gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ejmht")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 12.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3m7n"]
 radius = 3.0
@@ -10,10 +46,13 @@ height = 16.0
 [node name="Projectile" type="Area2D" unique_id=1456644191]
 script = ExtResource("1_q3m7n")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=399718143]
-texture = ExtResource("1_c8fcr")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=240890935]
+sprite_frames = SubResource("SpriteFrames_6q2a6")
+autoplay = "default"
+frame_progress = 0.038578685
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=42778738]
+visible = false
 position = Vector2(1, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_q3m7n")
