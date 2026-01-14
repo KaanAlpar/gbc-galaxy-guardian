@@ -7,6 +7,10 @@ var speed := 120.0
 func _ready() -> void:
 	pass
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
+
 func _physics_process(_delta: float) -> void:
 	var horizontal_dir := Input.get_axis("move_left", "move_right")
 	var vertical_dir := Input.get_axis("move_up", "move_down")
@@ -25,3 +29,6 @@ func _physics_process(_delta: float) -> void:
 		animation_player.play("down")
 	else:
 		animation_player.play("default")
+
+func shoot() -> void:
+	print("Shoot!")
