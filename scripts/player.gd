@@ -5,7 +5,7 @@ extends CharacterBody2D
 var speed := 120.0
 
 func _ready() -> void:
-	print(speed)
+	pass
 
 func _physics_process(_delta: float) -> void:
 	var horizontal_dir := Input.get_axis("move_left", "move_right")
