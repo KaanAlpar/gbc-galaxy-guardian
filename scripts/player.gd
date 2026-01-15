@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 signal shoot_projectile
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var main_ap: AnimationPlayer = $MainAP
+@onready var flash_ap: AnimationPlayer = $FlashAP
 @onready var muzzle: Marker2D = $Muzzle
 
 var speed := 120.0
@@ -12,7 +13,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
-		shoot()
+		flash_ap.play("shoot_laser")
 
 func _physics_process(_delta: float) -> void:
 	var horizontal_dir := Input.get_axis("move_left", "move_right")
@@ -27,11 +28,11 @@ func _physics_process(_delta: float) -> void:
 	global_position = global_position.clamp(Vector2.ZERO, viewport_size)
 	
 	if vertical_dir < 0.0:
-		animation_player.play("up")
+		main_ap.play("up")
 	elif vertical_dir > 0.0:
-		animation_player.play("down")
+		main_ap.play("down")
 	else:
-		animation_player.play("default")
+		main_ap.play("default")
 
 func shoot() -> void:
 	shoot_projectile.emit()
