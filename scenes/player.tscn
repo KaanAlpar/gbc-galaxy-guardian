@@ -94,3 +94,6 @@ shape = SubResource("CapsuleShape2D_g2els")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1900126552]
 libraries/ = SubResource("AnimationLibrary_y4r1p")
 autoplay = &"default"
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1131915508]
+position = Vector2(24, 0)

@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal shoot_projectile
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var muzzle: Marker2D = $Muzzle
 
 var speed := 120.0
 
