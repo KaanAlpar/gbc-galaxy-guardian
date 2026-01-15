@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal shoot_projectile
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var speed := 120.0
@@ -31,4 +33,4 @@ func _physics_process(_delta: float) -> void:
 		animation_player.play("default")
 
 func shoot() -> void:
-	print("Shoot!")
+	shoot_projectile.emit()
