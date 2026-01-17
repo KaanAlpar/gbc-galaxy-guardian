@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://b5tybpwcvycre" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://g0t7obya0t8g" path="res://scenes/enemy_spawner.tscn" id="3_lnu2h"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
+size = Vector2(52, 236)
+
 [node name="Game" type="Node2D" unique_id=190000675]
 script = ExtResource("1_lnu2h")
 
@@ -12,4 +15,11 @@ position = Vector2(20, 91)
 
 [node name="EnemySpawner" parent="." unique_id=662102725 instance=ExtResource("3_lnu2h")]
 
+[node name="EnemyDeathzone" type="Area2D" parent="." unique_id=881906584]
+position = Vector2(-65, 81)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDeathzone" unique_id=362870041]
+shape = SubResource("RectangleShape2D_lnu2h")
+
 [connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_enemy_spawned"]
+[connection signal="area_entered" from="EnemyDeathzone" to="." method="_on_enemy_deathzone_area_entered"]

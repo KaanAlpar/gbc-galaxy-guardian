@@ -14,3 +14,8 @@ func _on_player_shoot_projectile() -> void:
 
 func _on_enemy_spawner_enemy_spawned(instance) -> void:
 	add_child(instance)
+
+func _on_enemy_deathzone_area_entered(area: Area2D) -> void:
+	if area is Enemy:
+		area.queue_free()
+		print("Deleting enemy!")

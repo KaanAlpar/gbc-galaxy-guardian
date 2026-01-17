@@ -1,4 +1,5 @@
 extends Area2D
+class_name Enemy
 
 var speed := 100.0
 
