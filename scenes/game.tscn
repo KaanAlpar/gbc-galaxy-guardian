@@ -11,3 +11,5 @@ script = ExtResource("1_lnu2h")
 position = Vector2(20, 91)
 
 [node name="EnemySpawner" parent="." unique_id=662102725 instance=ExtResource("3_lnu2h")]
+
+[connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_enemy_spawned"]

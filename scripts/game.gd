@@ -11,3 +11,6 @@ func _on_player_shoot_projectile() -> void:
 	var projectile_instance = projectile_scene.instantiate()
 	projectile_instance.global_position = player.muzzle.global_position
 	add_child(projectile_instance)
+
+func _on_enemy_spawner_enemy_spawned(instance) -> void:
+	add_child(instance)
