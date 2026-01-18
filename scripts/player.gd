@@ -7,6 +7,8 @@ signal died
 @onready var main_ap: AnimationPlayer = $MainAP
 @onready var flash_ap: AnimationPlayer = $FlashAP
 @onready var muzzle: Marker2D = $Muzzle
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var speed := 120.0
 var is_alive := true
@@ -50,3 +52,9 @@ func die() -> void:
 	died.emit()
 	is_alive = false
 	main_ap.play("explode")
+
+func respawn(spawn_position: Vector2) -> void: 
+	global_position = spawn_position
+	is_alive = true
+	sprite_2d.visible = true
+	collision_shape_2d.set_deferred("disabled", false)

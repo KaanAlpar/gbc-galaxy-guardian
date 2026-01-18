@@ -10,6 +10,13 @@ size = Vector2(52, 236)
 [node name="Game" type="Node2D" unique_id=190000675]
 script = ExtResource("1_lnu2h")
 
+[node name="RespawnTimer" type="Timer" parent="." unique_id=424818280]
+wait_time = 3.0
+one_shot = true
+
+[node name="PlayerSpawnPosition" type="Marker2D" parent="." unique_id=1031578702]
+position = Vector2(30, 90)
+
 [node name="Player" parent="." unique_id=147160242 instance=ExtResource("1_uwrxv")]
 position = Vector2(20, 91)
 
@@ -21,5 +28,6 @@ position = Vector2(-65, 81)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDeathzone" unique_id=362870041]
 shape = SubResource("RectangleShape2D_lnu2h")
 
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_enemy_spawned"]
 [connection signal="area_entered" from="EnemyDeathzone" to="." method="_on_enemy_deathzone_area_entered"]

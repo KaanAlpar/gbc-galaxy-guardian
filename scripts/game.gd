@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var player: CharacterBody2D = $Player
+@onready var respawn_timer: Timer = $RespawnTimer
+@onready var player_spawn_position: Marker2D = $PlayerSpawnPosition
 
 var projectile_scene: PackedScene = preload("res://scenes/projectile.tscn")
 
@@ -25,3 +27,11 @@ func _on_enemy_deathzone_area_entered(area: Area2D) -> void:
 func _on_player_died() -> void:
 	lives -= 1
 	print(lives)
+	
+	if lives > 0:
+		respawn_timer.start()
+	else:
+		print("Game over")
+
+func _on_respawn_timer_timeout() -> void:
+	player.respawn(player_spawn_position.global_position)
