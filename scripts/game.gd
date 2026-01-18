@@ -18,4 +18,3 @@ func _on_enemy_spawner_enemy_spawned(instance) -> void:
 func _on_enemy_deathzone_area_entered(area: Area2D) -> void:
 	if area is Enemy:
 		area.queue_free()
-		print("Deleting enemy!")
