@@ -52,7 +52,6 @@ autoplay = "default"
 frame_progress = 0.038578685
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=42778738]
-visible = false
 position = Vector2(1, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_q3m7n")
@@ -62,4 +61,5 @@ position = Vector2(-2, 0)
 rect = Rect2(-11, -2, 4, 4)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
