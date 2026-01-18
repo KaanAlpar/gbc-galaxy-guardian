@@ -4,8 +4,11 @@ extends Node2D
 
 var projectile_scene: PackedScene = preload("res://scenes/projectile.tscn")
 
+var lives := 3
+
 func _ready() -> void:
 	player.shoot_projectile.connect(_on_player_shoot_projectile)
+	player.died.connect(_on_player_died)
 
 func _on_player_shoot_projectile() -> void:
 	var projectile_instance = projectile_scene.instantiate()
@@ -18,3 +21,7 @@ func _on_enemy_spawner_enemy_spawned(instance) -> void:
 func _on_enemy_deathzone_area_entered(area: Area2D) -> void:
 	if area is Enemy:
 		area.queue_free()
+
+func _on_player_died() -> void:
+	lives -= 1
+	print(lives)

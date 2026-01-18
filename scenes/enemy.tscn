@@ -143,3 +143,5 @@ polygon = PackedVector2Array(-11, -2, -9, -8, -6, -11, 0, -14, 5, -14, 9, -13, 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=564419031]
 libraries/ = SubResource("AnimationLibrary_otmr2")
 autoplay = &"default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

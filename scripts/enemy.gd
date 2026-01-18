@@ -10,3 +10,8 @@ func _physics_process(delta: float) -> void:
 
 func die() -> void:
 	animation_player.play("explode")
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.die()
+		die()
