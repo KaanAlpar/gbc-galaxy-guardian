@@ -221,6 +221,10 @@ height = 24.0
 motion_mode = 1
 script = ExtResource("1_g2els")
 
+[node name="InvincibilityTimer" type="Timer" parent="." unique_id=225783129]
+wait_time = 2.0
+one_shot = true
+
 [node name="MainAP" type="AnimationPlayer" parent="." unique_id=1900126552]
 libraries/ = SubResource("AnimationLibrary_y4r1p")
 autoplay = &"default"
@@ -242,3 +246,5 @@ shape = SubResource("CapsuleShape2D_g2els")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1131915508]
 position = Vector2(24, 0)
+
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

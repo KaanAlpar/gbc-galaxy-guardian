@@ -9,9 +9,11 @@ signal died
 @onready var muzzle: Marker2D = $Muzzle
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var invincibility_timer: Timer = $InvincibilityTimer
 
 var speed := 120.0
 var is_alive := true
+var is_invincible := false
 
 func _ready() -> void:
 	pass
@@ -49,6 +51,9 @@ func shoot() -> void:
 	shoot_projectile.emit()
 
 func die() -> void:
+	if is_invincible:
+		return
+	
 	died.emit()
 	is_alive = false
 	main_ap.play("explode")
@@ -57,4 +62,10 @@ func respawn(spawn_position: Vector2) -> void:
 	global_position = spawn_position
 	is_alive = true
 	sprite_2d.visible = true
+	
+	is_invincible = true
+	invincibility_timer.start()
+
+func _on_invincibility_timer_timeout() -> void:
 	collision_shape_2d.set_deferred("disabled", false)
+	is_invincible = false
