@@ -7,6 +7,7 @@ extends Node2D
 var projectile_scene: PackedScene = preload("res://scenes/projectile.tscn")
 
 var lives := 3
+var score := 0
 
 func _ready() -> void:
 	player.shoot_projectile.connect(_on_player_shoot_projectile)
@@ -18,6 +19,7 @@ func _on_player_shoot_projectile() -> void:
 	add_child(projectile_instance)
 
 func _on_enemy_spawner_enemy_spawned(instance) -> void:
+	instance.died.connect(_on_enemy_died)
 	add_child(instance)
 
 func _on_enemy_deathzone_area_entered(area: Area2D) -> void:
@@ -35,3 +37,7 @@ func _on_player_died() -> void:
 
 func _on_respawn_timer_timeout() -> void:
 	player.respawn(player_spawn_position.global_position)
+
+func _on_enemy_died() -> void:
+	score += 100
+	print("Score: " + str(score))
