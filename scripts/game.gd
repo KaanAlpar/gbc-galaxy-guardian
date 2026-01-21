@@ -11,6 +11,9 @@ var lives := 3
 var score := 0
 
 func _ready() -> void:
+	hud.set_lives(lives)
+	hud.set_score_label(score)
+	
 	player.shoot_projectile.connect(_on_player_shoot_projectile)
 	player.died.connect(_on_player_died)
 
@@ -29,7 +32,7 @@ func _on_enemy_deathzone_area_entered(area: Area2D) -> void:
 
 func _on_player_died() -> void:
 	lives -= 1
-	print(lives)
+	hud.set_lives(lives)
 	
 	if lives > 0:
 		respawn_timer.start()
