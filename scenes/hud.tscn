@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cixo5wlputyod"]
+
+[ext_resource type="FontFile" uid="uid://blf8nts5qasgg" path="res://assets/font/Kenney Pixel Square.ttf" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://nexd7ryqcipv" path="res://scripts/hud.gd" id="1_oo0fn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oo0fn"]
+font = ExtResource("1_ahhtf")
+font_size = 8
+
+[node name="HUD" type="Control" unique_id=1118206007]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oo0fn")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1429445351]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 70.0
+offset_bottom = 23.0
+text = "SCORE: 0"
+label_settings = SubResource("LabelSettings_oo0fn")
+vertical_alignment = 1

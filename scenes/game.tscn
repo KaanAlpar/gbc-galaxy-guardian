@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bd6n25piicgic" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://b5tybpwcvycre" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cixo5wlputyod" path="res://scenes/hud.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://g0t7obya0t8g" path="res://scenes/enemy_spawner.tscn" id="3_lnu2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
@@ -9,6 +10,10 @@ size = Vector2(52, 236)
 
 [node name="Game" type="Node2D" unique_id=190000675]
 script = ExtResource("1_lnu2h")
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1406036733]
+
+[node name="HUD" parent="UILayer" unique_id=1118206007 instance=ExtResource("2_lbhrr")]
 
 [node name="RespawnTimer" type="Timer" parent="." unique_id=424818280]
 wait_time = 3.0

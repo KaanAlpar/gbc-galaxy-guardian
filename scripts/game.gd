@@ -3,6 +3,7 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var respawn_timer: Timer = $RespawnTimer
 @onready var player_spawn_position: Marker2D = $PlayerSpawnPosition
+@onready var hud: Control = $UILayer/HUD
 
 var projectile_scene: PackedScene = preload("res://scenes/projectile.tscn")
 
@@ -40,4 +41,4 @@ func _on_respawn_timer_timeout() -> void:
 
 func _on_enemy_died() -> void:
 	score += 100
-	print("Score: " + str(score))
+	hud.set_score_label(score)
