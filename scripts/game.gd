@@ -4,10 +4,12 @@ extends Node2D
 @onready var respawn_timer: Timer = $RespawnTimer
 @onready var player_spawn_position: Marker2D = $PlayerSpawnPosition
 @onready var hud: Control = $UILayer/HUD
+@onready var ui_layer: CanvasLayer = $UILayer
 
 var projectile_scene: PackedScene = preload("res://scenes/projectile.tscn")
+var game_over_screen_scene: PackedScene = preload("res://scenes/game_over_screen.tscn")
 
-var lives := 3
+var lives := 1
 var score := 0
 
 func _ready() -> void:
@@ -37,7 +39,8 @@ func _on_player_died() -> void:
 	if lives > 0:
 		respawn_timer.start()
 	else:
-		print("Game over")
+		var game_over_screen = game_over_screen_scene.instantiate()
+		ui_layer.add_child(game_over_screen)
 
 func _on_respawn_timer_timeout() -> void:
 	player.respawn(player_spawn_position.global_position)
