@@ -39,6 +39,8 @@ func _on_player_died() -> void:
 	if lives > 0:
 		respawn_timer.start()
 	else:
+		await get_tree().create_timer(1.5).timeout
+		
 		var game_over_screen = game_over_screen_scene.instantiate()
 		ui_layer.add_child(game_over_screen)
 
