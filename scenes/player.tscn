@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b4v3suh7k4qdt" path="res://assets/textures/player/player1.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://crvfko1vcslma" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="AudioStream" uid="uid://b1ot1x3vb3lr6" path="res://assets/audio/shot 1.wav" id="2_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://cap7ekcoi8wo1" path="res://assets/textures/player/player2.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://celft4fc4re0f" path="res://assets/textures/player/player3.png" id="4_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://p71kljpi6dpm" path="res://assets/textures/explosion/explosion1.png" id="4_y4r1p"]
@@ -220,6 +221,9 @@ height = 24.0
 [node name="Player" type="CharacterBody2D" unique_id=147160242]
 motion_mode = 1
 script = ExtResource("1_g2els")
+
+[node name="LaserSound" type="AudioStreamPlayer" parent="." unique_id=1526252529]
+stream = ExtResource("2_d2wvv")
 
 [node name="InvincibilityTimer" type="Timer" parent="." unique_id=225783129]
 wait_time = 2.0

@@ -5,11 +5,12 @@ extends Node2D
 @onready var player_spawn_position: Marker2D = $PlayerSpawnPosition
 @onready var hud: Control = $UILayer/HUD
 @onready var ui_layer: CanvasLayer = $UILayer
+@onready var explode_sound: AudioStreamPlayer = $ExplodeSound
 
 var projectile_scene: PackedScene = preload("res://scenes/projectile.tscn")
 var game_over_screen_scene: PackedScene = preload("res://scenes/game_over_screen.tscn")
 
-var lives := 1
+var lives := 3
 var score := 0
 
 func _ready() -> void:
@@ -35,6 +36,7 @@ func _on_enemy_deathzone_area_entered(area: Area2D) -> void:
 func _on_player_died() -> void:
 	lives -= 1
 	hud.set_lives(lives)
+	explode_sound.play()
 	
 	if lives > 0:
 		respawn_timer.start()
@@ -50,3 +52,4 @@ func _on_respawn_timer_timeout() -> void:
 func _on_enemy_died() -> void:
 	score += 100
 	hud.set_score_label(score)
+	explode_sound.play()

@@ -10,6 +10,9 @@ signal died
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var invincibility_timer: Timer = $InvincibilityTimer
+@onready var laser_sound: AudioStreamPlayer = $LaserSound
+
+var laser_sounds := [preload("res://assets/audio/shot 1.wav"), preload("res://assets/audio/shot 2.wav")]
 
 var speed := 120.0
 var is_alive := true
@@ -49,6 +52,7 @@ func _physics_process(_delta: float) -> void:
 
 func shoot() -> void:
 	shoot_projectile.emit()
+	play_laser_sound()
 
 func die() -> void:
 	if is_invincible:
@@ -69,3 +73,8 @@ func respawn(spawn_position: Vector2) -> void:
 func _on_invincibility_timer_timeout() -> void:
 	collision_shape_2d.set_deferred("disabled", false)
 	is_invincible = false
+
+func play_laser_sound():
+	var sound_to_play = laser_sounds.pick_random()
+	laser_sound.stream = sound_to_play
+	laser_sound.play()
